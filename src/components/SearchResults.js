@@ -1,51 +1,16 @@
-import React, { Component } from "react";
-import SearchForm from "./SearchForm";
-import DataTable from "./DataTable";
-import API from "../utils/API";
+import React from "react";
 
-class SearchResults extends Component {
-    state = {
-        search: "",
-        results: []
-    };
-
-    // When this component mounts, search the Giphy API for pictures of kittens
-    componentDidMount() {
-        this.searchGiphy("kittens");
-    }
-
-    searchGiphy = query => {
-        API.search(query)
-            .then(res => this.setState({ results: res.data.data }))
-            .catch(err => console.log(err));
-    };
-
-    handleInputChange = event => {
-        const name = event.target.name;
-        const value = event.target.value;
-        this.setState({
-            [name]: value
-        });
-    };
-
-    // When the form is submitted, search the Giphy API for `this.state.search`
-    handleFormSubmit = event => {
-        event.preventDefault();
-        this.searchGiphy(this.state.search);
-    };
-
-    render() {
-        return (
-            <div>
-                <SearchForm
-                    search={this.state.search}
-                    handleFormSubmit={this.handleFormSubmit}
-                    handleInputChange={this.handleInputChange}
-                />
-                <DataTable results={this.state.results} />
-            </div>
-        );
-    }
+function SearchResults(props) {
+    return (
+        <ul className="list-group search-results">
+            {props.results.map(result => (
+                <li key={result} className="list-group-item">
+                    <img alt="Employee" src={result} className="img-fluid" />
+                </li>
+            ))}
+        </ul>
+    );
 }
 
 export default SearchResults;
+
