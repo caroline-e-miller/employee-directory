@@ -4,9 +4,9 @@ import axios from "axios";
 
 export default {
     getEmployeesByNationality: function (nationality) {
-        return axios.get("https://randomuser.me/api/?nat=gb" + nationality);
+        return axios.get("https://randomuser.me/api/?results=50?nat=gb" + nationality);
     },
     getAllEmployees: function () {
-        return axios.get("https://randomuser.me/api/");
+        return axios.get("https://randomuser.me/api/?results=50");
     }
 };

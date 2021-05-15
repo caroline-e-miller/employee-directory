@@ -5,7 +5,7 @@ import "./Nav.css";
 function Navbar() {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/">Worldwide Workers!</a>
+            <a className="navbar-brand" href="/">Worldwide Workers!</a>
         </nav>
     );
 }
