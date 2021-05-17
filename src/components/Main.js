@@ -12,7 +12,7 @@ class Main extends Component {
         error: ""
     };
 
-    // When the component mounts, get a list of all available employees and update this.state.breeds
+    // When the component mounts, get a list of all available employees and update this.state.employees
     componentDidMount() {
         API.getAllEmployees()
             .then(res => this.setState({ employees: res.data.results }))
@@ -20,6 +20,7 @@ class Main extends Component {
     }
 
     handleInputChange = event => {
+        console.log('search button');
         const value = event.target.value;
         const results = this.state.results;
 

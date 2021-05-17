@@ -2,9 +2,10 @@ import React from "react";
 
 function SearchForm(props) {
     return (
-        <form>
+
+        <form className="search-form">
             <div className="form-group">
-                <label htmlFor="sort">Sort by:</label>
+                <label htmlFor="country">Sort by country:</label>
                 <input
                     onChange={props.handleInputChange}
                     value={props.sort}
@@ -12,21 +13,24 @@ function SearchForm(props) {
                     list="employees"
                     type="text"
                     className="form-control"
-                    placeholder="Sort the table!"
+                    placeholder="Sort!"
                     id="sort"
                 />
                 {/* except with sort method */}
-                <datalist id="employees">
+                {/* <datalist id="employees">
                     {props.employees && props.employees.map(employee => (
                         <option value={employee} key={employee} />
                     ))}
-                </datalist>
+                </datalist> */}
                 <button onClick={props.handleFormSubmit} className="btn btn-primary mt-3">
                     Sort
-        </button>
+                </button>
             </div>
+
+
+
             <div className="form-group">
-                <label htmlFor="search">Search:</label>
+                <label htmlFor="name">Search:</label>
                 <input
                     onChange={props.handleInputChange}
                     value={props.search}
@@ -37,16 +41,17 @@ function SearchForm(props) {
                     placeholder="Search!"
                     id="search"
                 />
-                <datalist id="employees">
+                {/* <datalist id="employees">
                     {props.employees && props.employees.map(employee => (
                         <option value={employee} key={employee} />
                     ))}
-                </datalist>
-                <button onClick={props.handleFormSubmit} className="btn btn-primary mt-3">
+                </datalist> */}
+                <button onClick={props.handleInputChange} className="btn btn-primary mt-3">
                     Search
-        </button>
+                </button>
             </div>
         </form>
+
     );
 }
 
