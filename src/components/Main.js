@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import SearchForm from "../components/SearchForm";
-import SearchResults from "../components/SearchResults";
+// import SearchResults from "../components/SearchResults";
 import DataTable from "./DataTable";
 
 class Main extends Component {
@@ -20,10 +20,20 @@ class Main extends Component {
     }
 
     handleInputChange = event => {
-        this.setState({ search: event.target.value });
+        const value = event.target.value;
+        const results = this.state.results;
+
+        const searchResults = results.filter((result) => result.name.first.startsWith(`${value}`));
+        console.log(searchResults);
+
+        this.setState({
+            search: value,
+            results: searchResults
+        });
+        // this.setState({ search: event.target.value });
     };
 
-    handleFormSubmit = event => {
+    handleOnClick = event => {
         event.preventDefault();
         API.getEmployeesByNationality(this.state.search)
             .then(res => {
@@ -37,9 +47,9 @@ class Main extends Component {
     render() {
         return (
             <div>
-                <h1 className="text-center">Search By Country!</h1>
+                <h1 className="text-center">Find an employee!</h1>
                 <SearchForm
-                    handleFormSubmit={this.handleFormSubmit}
+                    handleFormSubmit={this.handleOnClick}
                     handleInputChange={this.handleInputChange}
                     employees={this.state.employees}
                 />
