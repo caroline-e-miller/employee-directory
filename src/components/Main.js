@@ -22,15 +22,21 @@ class Main extends Component {
     handleInputChange = event => {
         console.log('search button');
         const value = event.target.value;
-        const results = this.state.results;
+        const results = this.state.employees;
 
-        const searchResults = results.filter((result) => result.name.first.startsWith(`${value}`));
+
+        const searchResults = results.filter((result) => {
+            console.log(result.name.first);
+            // toLowerCase
+            return result.name.first.toLowerCase().startsWith(this.state.search)
+        });
         console.log(searchResults);
 
         this.setState({
             search: value,
-            results: searchResults
+            employees: searchResults
         });
+
         // this.setState({ search: event.target.value });
     };
 
@@ -47,16 +53,18 @@ class Main extends Component {
     };
     render() {
         return (
-            <div>
-                <h1 className="text-center">Find an employee!</h1>
+            <div class="container" >
                 <SearchForm
-                    handleFormSubmit={this.handleOnClick}
+                    // handleFormSubmit={this.handleOnClick}
+                    // name="search"
+                    // value={this.state.search}
                     handleInputChange={this.handleInputChange}
                     employees={this.state.employees}
+                    search={this.state.search}
                 />
                 {/* <SearchResults results={this.state.employees} /> */}
-                <DataTable results={this.state.employees} />
-            </div>
+                <DataTable results={this.state.employees} handleOnClick={this.handleOnClick} />
+            </div >
         );
     }
 }

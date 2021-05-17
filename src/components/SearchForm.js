@@ -2,9 +2,9 @@ import React from "react";
 
 function SearchForm(props) {
     return (
-
-        <form className="search-form">
-            <div className="form-group">
+        <div>
+            <form className="search-form">
+                {/* <div className="form-group">
                 <label htmlFor="country">Sort by country:</label>
                 <input
                     onChange={props.handleInputChange}
@@ -22,15 +22,14 @@ function SearchForm(props) {
                         <option value={employee} key={employee} />
                     ))}
                 </datalist> */}
-                <button onClick={props.handleFormSubmit} className="btn btn-primary mt-3">
+                {/* <button onClick={props.handleFormSubmit} className="btn btn-primary mt-3">
                     Sort
                 </button>
-            </div>
+            </div> */}
 
 
 
-            <div className="form-group">
-                <label htmlFor="name">Search:</label>
+                <label htmlFor="name">Search by name:</label>
                 <input
                     onChange={props.handleInputChange}
                     value={props.search}
@@ -46,12 +45,11 @@ function SearchForm(props) {
                         <option value={employee} key={employee} />
                     ))}
                 </datalist> */}
-                <button onClick={props.handleInputChange} className="btn btn-primary mt-3">
+                {/* <button onClick={props.handleInputChange} className="btn btn-primary mt-3">
                     Search
-                </button>
-            </div>
-        </form>
-
+                </button> */}
+            </form>
+        </div>
     );
 }
 

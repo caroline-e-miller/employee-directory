@@ -1,8 +1,8 @@
 import React from "react";
-import SearchResults from "./components/SearchResults";
 import Navbar from "./components/Navbar/Nav";
 import Wrapper from "./components/Wrapper/Wrapper"
 import Main from "./components/Main";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
