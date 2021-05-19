@@ -24,7 +24,7 @@ class Main extends Component {
         const value = event.target.value;
         const results = this.state.employees;
 
-
+        console.log(results);
         const searchResults = results.filter((result) => {
             console.log(result.name.first);
             // toLowerCase
@@ -42,14 +42,20 @@ class Main extends Component {
 
     handleOnClick = event => {
         event.preventDefault();
-        API.getEmployeesByNationality(this.state.search)
-            .then(res => {
-                if (res.data.status === "error") {
-                    throw new Error(res.data.message);
-                }
-                this.setState({ results: res.data.message, error: "" });
-            })
-            .catch(err => this.setState({ error: err.message }));
+        console.log('sort');
+        const results = this.state.employees;
+        const nationOrder = results.sort((employeea, employeeb) => employeea.location.country.localeCompare(employeeb.location.country));
+        // API.getEmployeesByNationality(this.state.search)
+        //     .then(res => {
+        //         if (res.data.status === "error") {
+        //             throw new Error(res.data.message);
+        //         }
+        //         this.setState({ results: res.data.message, error: "" });
+        //     })
+        //     .catch(err => this.setState({ error: err.message }));
+        this.setState({
+            results: nationOrder
+        });
     };
     render() {
         return (
