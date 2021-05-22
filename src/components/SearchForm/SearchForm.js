@@ -1,4 +1,5 @@
 import React from "react";
+import "./SearchForm.css";
 
 function SearchForm(props) {
     return (
@@ -40,6 +41,7 @@ function SearchForm(props) {
                     placeholder="Search!"
                     id="search"
                 />
+                <p>To sort alphabetically by country, simply click on "country."</p>
                 {/* <datalist id="employees">
                     {props.employees && props.employees.map(employee => (
                         <option value={employee} key={employee} />

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import SearchForm from "../components/SearchForm";
+import SearchForm from "./SearchForm/SearchForm";
 // import SearchResults from "../components/SearchResults";
 import DataTable from "./DataTable";
 
@@ -42,7 +42,7 @@ class Main extends Component {
 
     handleOnClick = event => {
         event.preventDefault();
-        console.log('sort');
+
         const results = this.state.employees;
         const nationOrder = results.sort((employeea, employeeb) => employeea.location.country.localeCompare(employeeb.location.country));
         // API.getEmployeesByNationality(this.state.search)
@@ -68,9 +68,9 @@ class Main extends Component {
                     employees={this.state.employees}
                     search={this.state.search}
                 />
-                {/* <SearchResults results={this.state.employees} /> */}
+
                 <DataTable results={this.state.employees} handleOnClick={this.handleOnClick} />
-            </div >
+            </div>
         );
     }
 }
