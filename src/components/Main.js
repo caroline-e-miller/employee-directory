@@ -45,14 +45,7 @@ class Main extends Component {
 
         const results = this.state.employees;
         const nationOrder = results.sort((employeea, employeeb) => employeea.location.country.localeCompare(employeeb.location.country));
-        // API.getEmployeesByNationality(this.state.search)
-        //     .then(res => {
-        //         if (res.data.status === "error") {
-        //             throw new Error(res.data.message);
-        //         }
-        //         this.setState({ results: res.data.message, error: "" });
-        //     })
-        //     .catch(err => this.setState({ error: err.message }));
+
         this.setState({
             results: nationOrder
         });
@@ -61,9 +54,6 @@ class Main extends Component {
         return (
             <div class="container" >
                 <SearchForm
-                    // handleFormSubmit={this.handleOnClick}
-                    // name="search"
-                    // value={this.state.search}
                     handleInputChange={this.handleInputChange}
                     employees={this.state.employees}
                     search={this.state.search}
